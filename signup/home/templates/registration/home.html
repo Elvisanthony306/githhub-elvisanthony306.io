@@ -1,0 +1,21 @@
+{% extends 'registration/layout.html' %}
+{% load static %}
+{% block body %}
+
+<h1>Welcome, {{ user.first_name }}</h1>
+
+    
+    <form method="POST" id="form">
+        
+        {% csrf_token %}
+        {{ form }}
+        {{ formtwo }}
+    <button type="submit" id="edit-btn">edit</button><br>
+    </form>
+
+
+</div>
+
+</main>
+<script src="{% static 'hood/home.js' %}"></script>
+{% endblock %}

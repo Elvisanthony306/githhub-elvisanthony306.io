@@ -1,0 +1,18 @@
+{% extends 'registration/layout.html' %}
+
+{% load static %}
+
+{% block body %}
+<div id="posts">
+    <div id="post">
+        <li id="posts"><a href="">{{ post.post }} - {{ post.time }} </a></li><br>
+        
+        <form action="" method="POST" id="edit-form">
+            {% csrf_token %}
+            {{ form }}
+            <span id="delete"><button type="submit">Edit</button></span>
+        </form>
+    </div>
+</div>
+    <script src="{% static 'hood/edit.js' %}"></script>
+{% endblock %}

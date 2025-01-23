@@ -1,0 +1,33 @@
+{% extends 'registration/layout.html' %}
+
+{% load static %}
+
+{% block body %}
+<div id="add"></div>  
+        <form method="POST" id="post-form">
+            {% csrf_token %}
+            <textarea id="add-post" type="text" name="add_post" ></textarea>
+            <button type="submit" id="add-post-btn" disabled> Add </button>
+        </form>  
+
+<div id="posts">
+    {% for posts in post %}
+        
+            
+            <a href="{% url 'home:posts' posts.id %}">
+                <div id="post">
+                    <span class="user_name"> - {{ user.username }} {{ user.last_name }} </span> - {{ posts.post }}  <br><span class="time">{{ posts.time }} </span></a>
+                    <span id="delete"><a href="{% url 'home:posts' posts.id %}"><button id="delete-btn">Delete</button></a><a href="{% url 'home:edit' posts.id %}"><button>Edit</button></a></span>
+                </div>
+    {% empty %}
+        <div class="no-post">
+            <p> no post yet</p>
+        </div>
+    {% endfor%}
+</div>
+    <div>
+        
+    
+        <a href="#add"><button id="add-btn">+</button></a>
+    <script src="{% static 'hood/post.js' %}"></script>
+{% endblock %}

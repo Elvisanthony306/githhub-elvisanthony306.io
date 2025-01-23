@@ -1,0 +1,14 @@
+{% extends "registration/out.html" %}
+
+
+
+
+{% block body %}
+<form method="POST" class="sign-log">
+    {% csrf_token %}
+    {{form}}
+    <button type="submit"> Sign up </button>
+    <a href="{% url 'home:login' %}">Log in </a>
+</form>
+
+{% endblock %}

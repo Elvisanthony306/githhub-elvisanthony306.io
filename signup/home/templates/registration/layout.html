@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hood</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'hood/styles.css' %}">
+    
+</head>
+<body>
+<nav>
+<div id="container">
+    <a href="{% url 'home:home' %}">
+    <div id="prof">
+    
+    <div id="prof-image">
+        <img src="{% static 'hood/prof.svg' %}" alt="">
+    </div>
+ 
+    <div> <p>{{user.first_name}} {{user.last_name}}</p></div>
+
+</div>
+</a>
+    <div id="items">
+        <a href="{% url 'home:home' %}" class="items">Profile</a>
+        <a href="{% url 'home:post' %}"class="items">Posts</a>
+        <a href="{% url 'home:post' %}"class="items">About</a>
+        <form id="log-out" method="POST" action="{% url 'home:logout' %}">
+            {% csrf_token %}
+            <button id="log-btn" type="submit">Log out</button>
+        </form>
+    </div>
+</div>
+<div id="ham-burger">
+    <span class="spike"></span>
+    <span class="spike"></span>
+    <span class="spike"></span>
+</div>
+</nav>
+<main>
+    {% block body %}
+    {% endblock %}
+</body>
+</main>
+<footer></footer>
+
+</html>

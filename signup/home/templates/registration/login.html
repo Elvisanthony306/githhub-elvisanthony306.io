@@ -1,0 +1,21 @@
+{% extends "registration/out.html" %}
+
+
+
+
+{% block body %}
+
+    {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+<div id="container">
+<form method="POST" class="sign-log">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit"> Log in   </button>
+    <a href="{% url 'home:authView' %}">Sign Up </a>
+</form>
+
+</div>
+{% endblock %}
